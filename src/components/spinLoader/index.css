@@ -1,0 +1,14 @@
+.spin-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px; /* Adjust this height as needed */
+}
+
+.spin-box .ant-spin {
+    color: #ffffff; /* Color of the spinner icon */
+}
+
+.spin-box .ant-spin-dot-item {
+    background-color: #ffffff; /* Color of the spinner dot */
+}

@@ -1,0 +1,201 @@
+/* Common styles for all pages */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Header styles */
+.header {
+    padding: 1rem;
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+/* Footer styles */
+.footer {
+    padding: 1rem;
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    font-size: 0.875rem;
+    margin-top: auto;
+}
+
+/* Background styling */
+.user-register .background {
+    background-color: rgba(216, 216, 216, 0.856);
+    background-size: cover;
+    background-position: center;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+
+}
+
+/* .content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1rem;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+} */
+
+/* Info Section */
+.info-section {
+    flex: 1;
+    padding: 2rem;
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    margin-right: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info-section h2 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.info-section p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Logo styles */
+.logo {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    max-height: 50px;
+    /* Adjust size as needed */
+}
+
+/* Common styles for forms */
+.user-register .form-box {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 1rem 0.5rem;
+    border-radius: 15px;
+    margin-top: 0rem;
+    max-width: 500px;
+    width: 100%; /* Ensure the form-box takes full width available within its container */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.user-register .user-register-box {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: auto;
+    padding: 20px 40px;
+}
+
+.user-register .user-register-box .sec-right,
+.user-register .user-register-box .sec-left {
+    margin-left: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.register-form {
+    margin-bottom: 2rem;
+}
+
+.head-box {
+    margin-bottom: 0.3rem;
+}
+
+.form-box label {
+    font-size: 15px;
+    margin-bottom: 0.2rem;
+}
+
+.register-btn {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-form .head-title {
+    color: var(--primary) !important;
+}
+
+.form-footer {
+    margin-top: 15px;
+}
+
+.register-form .ant-form-item {
+    margin-bottom: 15px;
+    line-height: 5px;
+}
+
+.register-form .ant-form-item-label {
+    margin-bottom: 15px;
+    line-height: 10px;
+}
+
+.register-form .ant-input,
+.register-form .ant-input-password {
+    line-height: 22px;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    width: 100%;
+    max-width: 500px;
+    /* Restrict form-container width */
+}
+.packages-section>div{
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 20px;
+}
+.packages-section>div .ant-col{
+    padding-left: 0 !important;
+}
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        gap: 20px; /* Ensure consistent gap between elements */
+    }
+
+    .info-section,
+    .form-container {
+        width: 100%;
+        margin: 0;
+    }
+
+    .packages-section .ant-col {
+        min-width: 100%; /* Package cards take up full width on small screens */
+    }
+}
+
+/* Ensure consistent spacing in user-register-box */
+.user-register-box {
+    margin-left: 0;
+    margin-right: 0;
+    row-gap: 16px;
+    justify-content: space-between;
+}

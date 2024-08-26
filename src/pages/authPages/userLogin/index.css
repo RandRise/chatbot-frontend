@@ -1,0 +1,121 @@
+/* Common styles for both forms */
+.user-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.user-login .form-box {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 1rem 0.5rem;
+    border-radius: 15px;
+    min-width: 5%;
+    margin-top: 0rem;
+    max-width: 500px;
+    width: 350px;
+    max-height: 530px;
+    height: auto
+    /* Ensures the form doesn't stretch too wide */
+}
+
+.user-login .login-form {
+    margin-bottom: 1rem;
+}
+
+.user-login .head-box {
+    margin-bottom: 1rem;
+}
+
+.user-login .form-box label {
+    font-size: 15px;
+    margin-bottom: 0.2rem;
+}
+
+.user-login .login-btn {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-login .login-form .head-title {
+    color: var(--primary);
+}
+
+
+
+.user-login .form-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.user-login .form-footer {
+    margin-top: 20px;
+}
+
+.user-login .footer {
+    padding: 1rem;
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    font-size: 0.875rem;
+    margin-top: auto;
+}
+
+.user-login .background {
+    background-color: rgba(216, 216, 216, 0.856);
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .form-box {
+        padding: 1rem 0.5rem;
+    }
+
+    .login-btn {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .head-title {
+        font-size: 1.5rem;
+        color: var(--primary);
+    }
+
+    .form-box {
+        width: 90%;
+    }
+}
+
+.login-form .head-title {
+    color: var(--primary) !important;
+}
+
+.user-login .form-footer {
+    margin-top: 20x;
+}
+
+.login-form .ant-form-item {
+    margin-bottom: 30px;
+    line-height: 15px;
+}
+
+.login-form .ant-form-item-label {
+    margin-bottom: 30px;
+    line-height: 15px;
+}
+
+.login-form .ant-input, .login-form .ant-input-password {
+    line-height: 22px;
+}

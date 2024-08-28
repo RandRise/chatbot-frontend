@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Button, Card, Form, Input, notification, Space, Typography } from 'antd';
+import { Button, Card, Form, Input, Space, Typography } from 'antd';
 import { RootState } from '../../../redux/reducers';
 import { USER_LOGIN_REQUEST } from '../../../redux/actions/Actions';
 import { userLoginModel } from '../../../models/UserLoginModel';
-import { GenericResponse } from '../../../utils/GenericResponse';
+import { LoginResponse } from '../../../utils/GenericResponse';
 import SpinLoader from '../../../components/spinLoader/SpinLoader';
 import './index.css'; // Import CSS
 import { Link } from 'react-router-dom';
 
 interface UserLoginProps {
-    response: GenericResponse | null;
+    response: LoginResponse | null;
     isSuccess: boolean | null;
     loading: boolean;
     loginUser: (user: userLoginModel) => void;
@@ -22,14 +22,18 @@ const UserLogin: React.FC<UserLoginProps> = ({ response, isSuccess, loading, log
     const navigate = useNavigate();
 
     useEffect(() => {
-        notification.destroy();
-        if (isSuccess === true) {
-            setTimeout(() => {
-                navigate('/dashboard');
-            }, 500);
+        if (isSuccess === true && response) {
+            const { token, role } = response.data;
+            localStorage.setItem('token', token);
+            localStorage.setItem('role', role);
+            if (role === 'admin') {
+                navigate('/admin');
+            } else if (role === 'user') {
+                navigate('/user');
+            }
         }
-  
-    }, [isSuccess, navigate, response?.message]);
+    },
+        [isSuccess, navigate, response, response?.message])
 
     const onFinish = (values: userLoginModel) => {
         loginUser(values);
@@ -38,7 +42,7 @@ const UserLogin: React.FC<UserLoginProps> = ({ response, isSuccess, loading, log
     return (
         <><div className='page-container>' />
             <header className='header'>
-                <img src='path/to/logo.png' alt='Logo' className='logo' />
+                <img src='R.svg' alt='Logo' className='logo' />
                 Your AI Chat Companion
             </header>
             <div className='background'>

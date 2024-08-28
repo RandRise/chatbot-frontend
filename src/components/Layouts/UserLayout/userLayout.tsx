@@ -1,45 +1,97 @@
-// src/components/Layouts/UserLayout/userLayout.tsx
-import React from 'react';
-import { Layout, Menu } from 'antd';
+import React, { useEffect } from 'react';
+import { Layout, Menu, ConfigProvider, Row, Col, Spin, Card } from 'antd';
 import { Link, Outlet } from 'react-router-dom';
-import {
-  HomeOutlined,
-  MessageOutlined,
-  ProfileOutlined,
-} from '@ant-design/icons';
+import { UnorderedListOutlined, RobotOutlined } from '@ant-design/icons';
+import { connect } from 'react-redux';
+import { RootState } from '../../../redux/reducers';
+import { GET_BOTS_REQUEST } from '../../../redux/actions/Actions';
 import './index.css';
+import LogoutButton from '../../Logout Button/LogoutButton';
+import { BotsModel, SubscriptionModel } from '../../../models/BotsModel';
 
 const { Header, Sider, Content } = Layout;
 
-const UserLayout: React.FC = () => {
+interface UserLayoutProps {
+  bots: BotsModel[];
+  loading: boolean;
+  fetchBots: () => void;
+}
+
+const UserLayout: React.FC<UserLayoutProps> = ({ bots, loading, fetchBots }) => {
+  useEffect(() => {
+    fetchBots();
+  }, [fetchBots]);
+
+  const renderSubscriptions = (subscriptions: SubscriptionModel[]) => {
+    return subscriptions.map((sub) => (
+      <p key={sub.id}>
+        Messages Remaining: {sub.msgcount}<br />
+        Expiry Date: {new Date(sub.expirydate).toLocaleDateString()}
+      </p>
+    ));
+  };
+
   return (
-    <Layout style={{ minHeight: '100vh' }}>
-      <Sider collapsible>
-        <div className="logo">User Dashboard</div>
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-          <Menu.Item key="1" icon={<HomeOutlined />}>
-            <Link to="/user/dashboard">Home</Link>
-          </Menu.Item>
-          <Menu.Item key="2" icon={<MessageOutlined />}>
-            <Link to="/user/messages">Messages</Link>
-          </Menu.Item>
-          <Menu.Item key="3" icon={<ProfileOutlined />}>
-            <Link to="/user/profile">Profile</Link>
-          </Menu.Item>
-        </Menu>
-      </Sider>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#3881C3',
+        },
+      }}
+    >
       <Layout>
-        <Header className="site-layout-background" style={{ padding: 0 }}>
-          <div className="header-content">
-            <h1>User Panel</h1>
+        <Sider width={230} collapsible className="ant-layout-sider">
+          <div className="logo">
+            {/* Placeholder for a logo if needed */}
           </div>
-        </Header>
-        <Content style={{ margin: '16px' }}>
-          <Outlet />
-        </Content>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+            <Menu.Item key="1" icon={<UnorderedListOutlined />}>
+              <Link to="/register">Packages</Link>
+            </Menu.Item>
+            <Menu.Item key="2" icon={<RobotOutlined />}>
+              <Link to="/user">Bots</Link>
+            </Menu.Item>
+            <Menu.Item key="3" icon={<LogoutButton collapsed={true} />}>
+              {/* Logout Button */}
+            </Menu.Item>
+          </Menu>
+        </Sider>
+        <Layout>
+          <Header className="header-content">
+            <h1 className='header-title'>User Panel</h1>
+          </Header>
+          <Content className="site-layout-background">
+            {loading ? (
+              <Spin size="large" />
+            ) : (
+              <Row gutter={[16, 16]}>
+                {bots.map((bot) => (
+                  <Col key={bot.id} span={8}>
+                    <Card title={bot.domain} bordered={true} className="bot-card">
+                      <p className='bot-card'>
+                        Status: {bot.status === 1 ? 'Active' : 'Inactive'}
+                      </p>
+                      {renderSubscriptions(bot.subscriptions)}
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            )}
+            <Outlet />
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
+    </ConfigProvider>
   );
 };
 
-export default UserLayout;
+const mapStateToProps = (state: RootState) => ({
+  bots: state.botsReducer.bots,
+  loading: state.botsReducer.loading,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  fetchBots: () => dispatch({ type: GET_BOTS_REQUEST }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserLayout);

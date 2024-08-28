@@ -76,7 +76,7 @@ function* userResetPasswordSaga(action: any): Generator<any, void, any> {
         const response = yield call(Authentication.resetUserPasswordApi, action.payload);
         if (response.code === 200) {
             yield put({ type: USER_RESET_PASSWORD_SUCCESS, payload: response });
-            showToast('error', response.message || 'Password reset success');
+            showToast('success', response.message || 'Password reset success');
 
         } else {
             yield put({ type: USER_REQUEST_FAILED, payload: response });
@@ -90,6 +90,7 @@ function* userResetPasswordSaga(action: any): Generator<any, void, any> {
 
     }
 }
+
 
 
 function* watchUserRegistrationSaga(): Generator<any, void, any> {

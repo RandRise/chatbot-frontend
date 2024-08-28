@@ -44,7 +44,7 @@
     justify-content: space-between;
     align-items: flex-start;
     padding: 1rem;
-    width: 90%;
+    width: 100%;
     max-width: 1400px;
     margin: 0 auto;
 } */
@@ -92,8 +92,10 @@
     border-radius: 15px;
     margin-top: 0rem;
     max-width: 500px;
-    width: 100%; /* Ensure the form-box takes full width available within its container */
-    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    width: 100%;
+    /* Ensure the form-box takes full width available within its container */
+    box-sizing: border-box;
+    /* Ensure padding doesn't affect width */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -166,19 +168,23 @@
     max-width: 500px;
     /* Restrict form-container width */
 }
-.packages-section>div{
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 0 20px;
+
+.packages-section>div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.packages-section>div .ant-col{
-    padding-left: 0 !important;
+
+.packages-section>div .ant-col {
+    padding-left: 8px !important;
+    padding-right: 32px !important;
 }
+
 @media (max-width: 768px) {
     .content-wrapper {
         flex-direction: column;
-        gap: 20px; /* Ensure consistent gap between elements */
+        gap: 20px;
+        /* Ensure consistent gap between elements */
     }
 
     .info-section,
@@ -188,14 +194,17 @@ padding: 0 20px;
     }
 
     .packages-section .ant-col {
-        min-width: 100%; /* Package cards take up full width on small screens */
+        min-width: 100%;
+        /* Package cards take up full width on small screens */
     }
 }
 
 /* Ensure consistent spacing in user-register-box */
 .user-register-box {
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 8px;
+    margin-right: 8px;
     row-gap: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
     justify-content: space-between;
 }

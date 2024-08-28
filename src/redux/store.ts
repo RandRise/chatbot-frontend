@@ -7,6 +7,7 @@ import loginReducer from "./reducers/LoginReducer";
 import forgetPasswordReducer from "./reducers/ForgetPasswordReducer";
 import resetPasswordReducer from "./reducers/ResetPasswordReducer";
 import packagesReducer from "./reducers/FetchPackagesReducer";
+import botsReducer from "./reducers/UserBotManagmentReducer";
 
 const rootReducer = combineReducers({
     userRegistration: registrationReducer,
@@ -14,7 +15,7 @@ const rootReducer = combineReducers({
     userForgetPassword: forgetPasswordReducer,
     userResetPassword: resetPasswordReducer,
     pkgReducer: packagesReducer,
-
+    botsReducer: botsReducer,
 })
 
 const sagaMiddleWare = createSagaMiddleware();

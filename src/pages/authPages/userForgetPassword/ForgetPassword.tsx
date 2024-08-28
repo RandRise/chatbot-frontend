@@ -6,6 +6,7 @@ import { USER_FORGET_PASSWORD_REQUEST } from '../../../redux/actions/Actions';
 import { userForgetPasswordModel } from '../../../models/UserForgetPasswordModel';
 import { RootState } from '../../../redux/reducers';
 import './index.css'
+import SpinLoader from '../../../components/spinLoader/SpinLoader';
 interface ForgetPasswordProps {
     loading: boolean;
     response: any;
@@ -52,8 +53,8 @@ const ForgotPassword: React.FC<ForgetPasswordProps> = ({ loading, response, isSu
                             <Form.Item>
                                 <div className='form-footer'>
 
-                                    <Button className='forget-password-btn' type="primary" htmlType="submit" block loading={loading}>
-                                        Send Verification Code
+                                    <Button className='forget-password-btn' type="primary" htmlType="submit" block>
+                                    {loading ? <SpinLoader /> : 'Send Verification Code'}
                                     </Button>
                                 </div>
                             </Form.Item>

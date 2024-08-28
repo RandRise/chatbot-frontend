@@ -6,6 +6,7 @@ import { USER_RESET_PASSWORD_REQUEST } from '../../../redux/actions/Actions';
 import { userResetPasswordModel } from '../../../models/UserResetPasswordModel';
 import { RootState } from '../../../redux/reducers';
 import './index.css'
+import SpinLoader from '../../../components/spinLoader/SpinLoader';
 
 interface ResetPasswordProps {
     loading: boolean;
@@ -65,7 +66,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ loading, response, isSucc
                             </Form.Item>
                             <Form.Item>
                                 <Button className='user-reset-password-btn' type="primary" htmlType="submit" block loading={loading}>
-                                    Reset Password
+                                    {loading ? <SpinLoader /> : 'Reset Password'}
                                 </Button>
                             </Form.Item>
                         </Form>

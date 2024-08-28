@@ -7,6 +7,7 @@ import {
   DashboardOutlined,
   SettingOutlined,
 } from '@ant-design/icons';
+import LogoutButton from '../../Logout Button/LogoutButton';
 import './index.css';
 
 const { Header, Sider, Content } = Layout;
@@ -24,7 +25,9 @@ const AdminLayout: React.FC = () => {
             <Link to="/admin/users">Users</Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<SettingOutlined />}>
-            <Link to="/admin/settings">Settings</Link>
+            <Link to="">Settings</Link>
+          </Menu.Item>
+          <Menu.Item key="4" icon={<LogoutButton collapsed={false} />}>
           </Menu.Item>
         </Menu>
       </Sider>

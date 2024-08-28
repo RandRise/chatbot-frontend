@@ -6,6 +6,8 @@ import ResetPassword from '../pages/authPages/userResetPassword/ResetPassword';
 import ForgetPassword from '../pages/authPages/userForgetPassword/ForgetPassword';
 import DashboardAdmin from '../components/Layouts/AdminLayout/adminLayout';
 import DashboardUser from '../components/Layouts/UserLayout/userLayout';
+import AdminRoute from './AdminRoute';
+import UserRoute from './UserRoute';
 
 const AppRoutes: React.FC = () => {
     return (
@@ -13,32 +15,15 @@ const AppRoutes: React.FC = () => {
             <Routes>
                 <Route path="/login" element={<UserLogin />} />
                 <Route path="/register" element={<UserRegistration />} />
-                <Route path="/" element={<Navigate to="/login" />} />
+                <Route path="/" element={<Navigate to="/register" />} />
                 <Route path="reset-password" element={<ResetPassword />} />
                 <Route path="forget-password" element={<ForgetPassword />} />
-                <Route path="/admin/*" element={<PrivateRoutes role="admin"><DashboardAdmin /></PrivateRoutes>} />
-                <Route path="/user/*" element={<PrivateRoutes role="user"><DashboardUser /></PrivateRoutes>} />
+                <Route path="/admin" element={<AdminRoute><DashboardAdmin /></AdminRoute>} />
+                <Route path="/user" element={<UserRoute><DashboardUser /></UserRoute>} />
                 <Route path="*" element={<NotFound />} />
-                <Route path="/admin/" element={<DashboardAdmin />} />
             </Routes>
         </Router>
     );
-};
-
-// Component for handling private routes based on roles
-const PrivateRoutes: React.FC<{ children: React.ReactNode; role: string }> = ({ children, role }) => {
-    const token = localStorage.getItem('token');
-    const userRole = localStorage.getItem('role'); // Assuming you store the user role in localStorage
-
-    if (!token) {
-        return <Navigate to="/login" />;
-    }
-
-    if (userRole !== role) {
-        return <Navigate to="/" />;
-    }
-
-    return <>{children}</>;
 };
 
 // Simple NotFound component for unmatched routes

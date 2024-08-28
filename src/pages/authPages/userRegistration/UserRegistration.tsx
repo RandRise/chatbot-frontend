@@ -9,6 +9,7 @@ import { GenericResponse } from '../../../utils/GenericResponse';
 import { PackageModel } from '../../../models/PackageModel';
 import PackageCard from '../../../components/Packages/PackageCard';
 import './index.css';
+import SpinLoader from '../../../components/spinLoader/SpinLoader';
 
 interface UserRegistrationProps {
     response: GenericResponse | null;
@@ -43,7 +44,7 @@ const UserRegistrationForm: React.FC<UserRegistrationProps> = ({ response, isSuc
     return (
         <div className='user-register'>
             <header className='header'>
-                <img src='/path/to/your/logo.png' alt='Logo' className='logo' />
+                <img src='/home/rand/Documents/RAG-Model/chatbot-frontend/transparent_2024-08-27T08-23-17.png' alt='Logo' className='logo' />
                 Your Site Header
             </header>
             <div className='background'>
@@ -53,10 +54,10 @@ const UserRegistrationForm: React.FC<UserRegistrationProps> = ({ response, isSuc
                             <div className='info-section'>
                                 <h2>Welcome to AI Chat Companion</h2>
                                 <p>Your ultimate platform for personalized AI-driven chat solutions. Our AI Chat Companion is designed to cater to your diverse communication needs, whether you're looking for professional advice, educational assistance, or simply a friendly conversation.</p>
-                                <p>Explore our tailored plans and choose the one that best fits your needs. Each plan is crafted to provide you with unique features and advantages, ensuring a seamless experience.</p>
+                                <p>Explore our tailored plans and choose the one that best fits your needs.Our AI Chat Companion Each plan is crafted to provide you with unique features and advantages, ensuring a seamless experience.</p>
                             </div>
                             <section className='packages-section'>
-                                <Typography.Title level={3} >Pricing</Typography.Title>
+                                <Typography.Title level={3} >Subscription Plans</Typography.Title>
                                 <Row gutter={[16, 16]}>
                                     {packages.map(pkg => (
                                         <Col xs={24} sm={12} md={6} key={pkg.id}>
@@ -112,8 +113,8 @@ const UserRegistrationForm: React.FC<UserRegistrationProps> = ({ response, isSuc
                                         </Form.Item>
 
                                         <Form.Item>
-                                            <Button className='register-btn' type="primary" htmlType="submit" block loading={loading}>
-                                                Register
+                                            <Button className='register-btn' type="primary" htmlType="submit" block>
+                                            {loading ? <SpinLoader /> : 'Register'}
                                             </Button>
                                         </Form.Item>
                                     </Form>

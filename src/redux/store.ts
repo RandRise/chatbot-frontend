@@ -9,6 +9,7 @@ import resetPasswordReducer from "./reducers/ResetPasswordReducer";
 import packagesReducer from "./reducers/FetchPackagesReducer";
 import botsReducer from "./reducers/UserBotManagmentReducer";
 import createOrderReducer from "./reducers/OrderReducer";
+import rechargeChatbotReducer from "./reducers/ChatbotRechargeReducer";
 
 const rootReducer = combineReducers({
     userRegistration: registrationReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
     pkgReducer: packagesReducer,
     botsReducer: botsReducer,
     orderReducer: createOrderReducer,
+    rechargeChatbot: rechargeChatbotReducer,
 })
 
 const sagaMiddleWare = createSagaMiddleware();

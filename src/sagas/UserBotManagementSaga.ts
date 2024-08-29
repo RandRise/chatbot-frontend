@@ -1,22 +1,39 @@
 import { put, call, all, takeEvery } from "redux-saga/effects";
-import { fetchBotsInfo } from "../api/Bots";
+import { chatbotManagement } from "../api/Bots";
 
 import {
     GET_BOTS_REQUEST,
     GET_BOTS_SUCCESS,
     GET_BOTS_FAILURE,
+    RECHARGE_BOT_FAILURE,
+    RECHARGE_BOT_REQUEST,
+    RECHARGE_BOT_SUCCESS,
 } from '../redux/actions/Actions';
 
 
 function* fetchBotsSaga(): Generator<any, void, any> {
     try {
-        const response = yield call(fetchBotsInfo.fetchBotsInfoApi);
-            yield put({ type: GET_BOTS_SUCCESS, payload: response })        
+        const response = yield call(chatbotManagement.fetchBotsInfoApi);
+        yield put({ type: GET_BOTS_SUCCESS, payload: response })
     } catch (error: any) {
         yield put({ type: GET_BOTS_FAILURE, payload: error })
     }
 }
 
+function* rechargeBotSaga(action: any): Generator<any, void, any> {
+    try {
+        const response = yield call(chatbotManagement.rechargeBotQuotaApi, action.payload)
+        yield put ({ type: RECHARGE_BOT_SUCCESS, payload: response})
+        yield put({ type: GET_BOTS_REQUEST, payload: response })
+
+    } catch (error: any) {
+        yield put({type: RECHARGE_BOT_FAILURE, payload: error})
+    }
+}
+
+function* watchRechargeBotSaga(): Generator<any, void, any> {
+    yield takeEvery(RECHARGE_BOT_REQUEST, rechargeBotSaga);
+}
 
 function* watchGetBotsSaga(): Generator<any, void, any> {
     yield takeEvery(GET_BOTS_REQUEST, fetchBotsSaga);
@@ -25,5 +42,6 @@ function* watchGetBotsSaga(): Generator<any, void, any> {
 export default function* botSaga() {
     yield all([
         watchGetBotsSaga(),
+        watchRechargeBotSaga(),
     ])
 }

@@ -10,6 +10,7 @@ import packagesReducer from "./reducers/FetchPackagesReducer";
 import botsReducer from "./reducers/UserBotManagmentReducer";
 import createOrderReducer from "./reducers/OrderReducer";
 import rechargeChatbotReducer from "./reducers/ChatbotRechargeReducer";
+import retrainChatbotReducer from "./reducers/ChatbotRetrainReducer";
 
 const rootReducer = combineReducers({
     userRegistration: registrationReducer,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     botsReducer: botsReducer,
     orderReducer: createOrderReducer,
     rechargeChatbot: rechargeChatbotReducer,
+    retrainChatbot: retrainChatbotReducer,
 })
 
 const sagaMiddleWare = createSagaMiddleware();

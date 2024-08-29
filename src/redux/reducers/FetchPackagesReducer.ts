@@ -20,7 +20,7 @@ const packagesReducer = (state = initialState, action: any): PackageState => {
         case GET_PACKAGES_SUCCESS:
             return { ...state, loading: false, packages: action.payload.data, response: action.payload };
         case GET_PACKAGES_FAILURE:
-            return { ...state, loading: false, response: action.paylad };
+            return { ...state, loading: false, response: action.payload };
         default:
             return state;
     }

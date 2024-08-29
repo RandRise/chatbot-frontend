@@ -17,7 +17,7 @@ import {
 function* userRegistrationSaga(action: any): Generator<any, void, any> {
     try {
         const response = yield call(Authentication.registerUserApi, action.payload);
-        if (response.code === 200 || 204) {
+        if (response.code === 200) {
             yield put({ type: USER_REGISTRATION_SUCCESS, payload: response });
             showToast('success', response.message || 'Registration successful');
         } else {

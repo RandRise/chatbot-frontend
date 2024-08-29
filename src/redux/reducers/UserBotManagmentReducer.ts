@@ -20,7 +20,7 @@ const botsReducer = (state = initialState, action: any): BotState => {
         case GET_BOTS_SUCCESS:
             return { ...state, loading: false, bots: action.payload.data, response: action.payload };
         case GET_BOTS_FAILURE:
-            return { ...state, loading: false, response: action.paylad };
+            return { ...state, loading: false, response: action.payload };
         default:
             return state;
     }

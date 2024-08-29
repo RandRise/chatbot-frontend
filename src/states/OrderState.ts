@@ -1,9 +1,8 @@
-import { BotsModel } from "../models/BotsModel";
 import { GenericResponse } from "../utils/GenericResponse";
 
-export interface BotState {
-    bots: BotsModel[];
+export interface OrderState {
     loading: boolean;
     response: GenericResponse | null;
-}
+    isSuccess: boolean | null;
 
+}

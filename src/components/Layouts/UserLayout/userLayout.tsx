@@ -4,10 +4,12 @@ import { Link, Outlet } from 'react-router-dom';
 import { UnorderedListOutlined, RobotOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { RootState } from '../../../redux/reducers';
-import { GET_BOTS_REQUEST } from '../../../redux/actions/Actions';
+import { GET_BOTS_REQUEST, GET_PACKAGES_REQUEST } from '../../../redux/actions/Actions';
 import './index.css';
 import LogoutButton from '../../Logout Button/LogoutButton';
 import { BotsModel, SubscriptionModel } from '../../../models/BotsModel';
+import { PackageModel } from '../../../models/PackageModel';
+import CreateOrderButton from '../../CreateOrderButton/CreateOrderButton';
 
 const { Header, Sider, Content } = Layout;
 
@@ -15,12 +17,15 @@ interface UserLayoutProps {
   bots: BotsModel[];
   loading: boolean;
   fetchBots: () => void;
+  packages: PackageModel[];  // Add packages to props
+  fetchPackages: () => void;  // Function to fetch packages
 }
 
-const UserLayout: React.FC<UserLayoutProps> = ({ bots, loading, fetchBots }) => {
+const UserLayout: React.FC<UserLayoutProps> = ({ bots, loading, fetchBots, fetchPackages, packages }) => {
   useEffect(() => {
     fetchBots();
-  }, [fetchBots]);
+    fetchPackages();
+  }, [fetchBots, fetchPackages]);
 
   const renderSubscriptions = (subscriptions: SubscriptionModel[]) => {
     return subscriptions.map((sub) => (
@@ -61,6 +66,7 @@ const UserLayout: React.FC<UserLayoutProps> = ({ bots, loading, fetchBots }) => 
             <h1 className='header-title'>User Panel</h1>
           </Header>
           <Content className="site-layout-background">
+            <CreateOrderButton  />
             {loading ? (
               <Spin size="large" />
             ) : (
@@ -88,10 +94,12 @@ const UserLayout: React.FC<UserLayoutProps> = ({ bots, loading, fetchBots }) => 
 const mapStateToProps = (state: RootState) => ({
   bots: state.botsReducer.bots,
   loading: state.botsReducer.loading,
+  packages: state.pkgReducer.packages
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
   fetchBots: () => dispatch({ type: GET_BOTS_REQUEST }),
+  fetchPackages: () => dispatch({ type: GET_PACKAGES_REQUEST }),  // Action to fetch packages
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserLayout);

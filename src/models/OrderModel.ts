@@ -4,15 +4,11 @@ export interface CreateOrderModel {
 }
 
 export interface OrderInfoModel {
-    id: string
-    user_id: string
-    package_id: string
-    unitprice: string
+    id: number
+    package_id: number
+    unitprice: number
     createdate: string
     package_name: string
-    bot_id: string
-    bot_status: number
-    subscription_id: string
-    subscription_msgcount: string
-    subscription_expirydate: string
+    msgcount: string
+    numbofmonths: string
 }

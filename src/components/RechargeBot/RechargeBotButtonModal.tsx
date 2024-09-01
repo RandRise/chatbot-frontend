@@ -26,7 +26,7 @@ const RechargeBotButtonModal: React.FC<RechargeBotButtonModalProps> = ({ botId, 
             </Button>
             <Modal
                 title="Recharge Bot"
-                visible={isModalVisible}
+                open={isModalVisible}
                 onCancel={handleCancel}
                 footer={null}
             >

@@ -26,7 +26,7 @@ const CreateOrderButton = () => {
             </Button>
             <Modal
                 title="Create New Bot"
-                visible={isModalVisible}
+                open={isModalVisible}
                 onCancel={handleCancel}
                 footer={null}
             >

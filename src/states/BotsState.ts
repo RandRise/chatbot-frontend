@@ -7,3 +7,9 @@ export interface BotState {
     response: GenericResponse | null;
 }
 
+export interface BotManagementState {
+    bots: BotsModel[]
+    loading: boolean
+    response: GenericResponse | null
+    isSuccess: boolean | null
+}

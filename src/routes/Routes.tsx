@@ -8,6 +8,7 @@ import DashboardAdmin from '../components/Layouts/AdminLayout/adminLayout';
 import DashboardUser from '../components/Layouts/UserLayout/userLayout';
 import AdminRoute from './AdminRoute';
 import UserRoute from './UserRoute';
+import MyOrders from '../pages/userPages/UserOrders';
 
 const AppRoutes: React.FC = () => {
     return (
@@ -19,7 +20,10 @@ const AppRoutes: React.FC = () => {
                 <Route path="reset-password" element={<ResetPassword />} />
                 <Route path="forget-password" element={<ForgetPassword />} />
                 <Route path="/admin" element={<AdminRoute><DashboardAdmin /></AdminRoute>} />
-                <Route path="/user" element={<UserRoute><DashboardUser /></UserRoute>} />
+                <Route path="/user" element={<UserRoute><DashboardUser /></UserRoute>} >
+                    <Route path="orders" element={<MyOrders />} />
+                    {/* <Route path="bots" element= {< CreateBotForm onSuccess=}/>} */}
+                </Route>
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </Router>

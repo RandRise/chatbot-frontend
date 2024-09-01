@@ -1,4 +1,4 @@
-import { BotState } from "../../states/BotsState";
+import { BotManagementState } from "../../states/BotsState";
 import {
     RETRAIN_BOT_FAILURE,
     RETRAIN_BOT_REQUEST,
@@ -7,20 +7,21 @@ import {
 
 
 
-const initialState: BotState = {
+const initialState: BotManagementState = {
     bots: [],
     loading: false,
-    response: null
+    response: null,
+    isSuccess: null
 };
 
-const retrainChatbotReducer = (state = initialState, action: any): BotState => {
+const retrainChatbotReducer = (state = initialState, action: any): BotManagementState => {
     switch (action.type) {
         case RETRAIN_BOT_REQUEST:
             return { ...state, loading: true };
         case RETRAIN_BOT_SUCCESS:
-            return { ...state, loading: false, bots: action.payload.data, response: action.payload };
+            return { ...state, loading: false, bots: action.payload.data, response: action.payload, isSuccess: true };
         case RETRAIN_BOT_FAILURE:
-            return { ...state, loading: false, response: action.payload };
+            return { ...state, loading: false, response: action.payload, isSuccess: false };
         default:
             return state;
     }

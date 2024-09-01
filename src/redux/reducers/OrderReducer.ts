@@ -1,4 +1,8 @@
-import { CREATE_ORDER_FAILURE, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS } from "../actions/Actions"
+import {
+    CREATE_ORDER_FAILURE,
+    CREATE_ORDER_REQUEST,
+    CREATE_ORDER_SUCCESS
+} from "../actions/Actions"
 import { OrderState } from "../../states/OrderState";
 
 const initialState: OrderState = {

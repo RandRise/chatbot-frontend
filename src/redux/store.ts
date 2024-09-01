@@ -11,6 +11,7 @@ import botsReducer from "./reducers/UserBotManagmentReducer";
 import createOrderReducer from "./reducers/OrderReducer";
 import rechargeChatbotReducer from "./reducers/ChatbotRechargeReducer";
 import retrainChatbotReducer from "./reducers/ChatbotRetrainReducer";
+import orderInfoReducer from "./reducers/OrderInfoReducer";
 
 const rootReducer = combineReducers({
     userRegistration: registrationReducer,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
     orderReducer: createOrderReducer,
     rechargeChatbot: rechargeChatbotReducer,
     retrainChatbot: retrainChatbotReducer,
+    orderInfoReducer: orderInfoReducer,
 })
 
 const sagaMiddleWare = createSagaMiddleware();

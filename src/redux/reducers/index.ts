@@ -8,6 +8,7 @@ import botsReducer from './UserBotManagmentReducer';
 import createOrderReducer from './OrderReducer';
 import rechargeChatbotReducer from './ChatbotRechargeReducer';
 import retrainChatbotReducer from './ChatbotRetrainReducer';
+import orderInfoReducer from './OrderInfoReducer';
 
 const rootReducer = combineReducers({
   userRegistration: registrationReducer,
@@ -19,6 +20,8 @@ const rootReducer = combineReducers({
   orderReducer: createOrderReducer,
   rechargeChatbot: rechargeChatbotReducer,
   retrainChatbot: retrainChatbotReducer,
+  orderInfoReducer: orderInfoReducer,
+
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

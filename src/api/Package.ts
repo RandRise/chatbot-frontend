@@ -11,4 +11,13 @@ export class fetchPackageInfo {
             throw error.response?.data ?? error.message;
         }
     }
+
+    static fetchPaidPackageApi = async (): Promise<GenericResponse> => {
+        try {
+            const response = await axios.get(`${baseURL}/get-paid-packages`);
+            return response.data;
+        } catch (error: any) {
+            throw error.response?.data ?? error.message;
+        }
+    }
 }

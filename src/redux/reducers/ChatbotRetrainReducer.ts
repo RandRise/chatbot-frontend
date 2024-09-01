@@ -19,7 +19,7 @@ const retrainChatbotReducer = (state = initialState, action: any): BotManagement
         case RETRAIN_BOT_REQUEST:
             return { ...state, loading: true };
         case RETRAIN_BOT_SUCCESS:
-            return { ...state, loading: false, bots: action.payload.data, response: action.payload, isSuccess: true };
+            return { ...state, loading: false, bots: action.payload, response: action.payload, isSuccess: true };
         case RETRAIN_BOT_FAILURE:
             return { ...state, loading: false, response: action.payload, isSuccess: false };
         default:

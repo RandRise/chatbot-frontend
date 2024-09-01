@@ -5,3 +5,4 @@ export interface PackageModel {
     numofmonths: number,
     formattedPrice: string,
 }
+

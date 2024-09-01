@@ -10,6 +10,7 @@ import AdminRoute from './AdminRoute';
 import UserRoute from './UserRoute';
 import MyOrders from '../pages/userPages/UserOrders';
 
+
 const AppRoutes: React.FC = () => {
     return (
         <Router>
@@ -22,7 +23,8 @@ const AppRoutes: React.FC = () => {
                 <Route path="/admin" element={<AdminRoute><DashboardAdmin /></AdminRoute>} />
                 <Route path="/user" element={<UserRoute><DashboardUser /></UserRoute>} >
                     <Route path="orders" element={<MyOrders />} />
-                    {/* <Route path="bots" element= {< CreateBotForm onSuccess=}/>} */}
+                    <Route path="bots" element={<div />} />
+                    
                 </Route>
                 <Route path="*" element={<NotFound />} />
             </Routes>

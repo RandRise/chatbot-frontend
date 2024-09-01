@@ -8,6 +8,7 @@ import {
     GET_ORDER_FAILURE,
     GET_ORDER_REQUEST,
     GET_ORDER_SUCCESS,
+    GET_BOTS_REQUEST,
 } from '../redux/actions/Actions';
 import { showToast } from "../components/ToastComponent";
 
@@ -15,6 +16,7 @@ function* createOrderSaga(action: any): Generator<any, void, any> {
     try {
         const response = yield call(OrderManagement.createOrderApi, action.payload);
         yield put({ type: CREATE_ORDER_SUCCESS, payload: response })
+        yield put({ type: GET_BOTS_REQUEST, payload: response })
         showToast('success', response.message || 'Success');
 
     } catch (error: any) {
@@ -27,7 +29,6 @@ function* createOrderSaga(action: any): Generator<any, void, any> {
 function* fetchOrdersSaga(): Generator<any, void, any> {
     try {
         const response = yield call(OrderManagement.fetchOrdersApi);
-        console.log('Saga response:', response); // Add this log
         yield put({ type: GET_ORDER_SUCCESS, payload: response.data })
     } catch (error: any) {
         yield put({ type: GET_ORDER_FAILURE, payload: error })

@@ -36,7 +36,10 @@ export class chatbotManagement {
     static retrainBotApi = async (botId: number): Promise<GenericResponse> => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.post(`${baseURL}/retrain-bot`, botId, {
+            if (!botId) {
+                throw new Error('Bot ID is missing');
+            }
+            const response = await axios.post(`${baseURL}/retrain-bot`, { botId }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
-import { Layout, Menu, ConfigProvider, Row, Col, Spin, Card, Space } from 'antd';
-import { Link, Outlet } from 'react-router-dom';
+import { Layout, Menu, ConfigProvider, Spin } from 'antd';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { ShoppingCartOutlined, RobotOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { RootState } from '../../../redux/reducers';
-import { GET_BOTS_REQUEST, GET_PACKAGES_REQUEST } from '../../../redux/actions/Actions';
+import { GET_BOTS_REQUEST, GET_PAID_PACKAGES_REQUEST } from '../../../redux/actions/Actions';
 import './index.css';
 import LogoutButton from '../../Logout Button/LogoutButton';
-import { BotsModel, SubscriptionModel } from '../../../models/BotsModel';
-import { PackageModel } from '../../../models/PackageModel';
-import RechargeBotButtonModal from '../../RechargeBot/RechargeBotButtonModal';
-import RetrainBotButton from '../../RetrainBot/RetrainButton';
 import CreateOrderButton from '../../CreateOrderButton/CreateOrderButton';
+import UserBots from '../../../pages/userPages/UserBots';// Updated import
+import { BotsModel } from '../../../models/BotsModel';
+import { PackageModel } from '../../../models/PackageModel';
+
 const { Header, Sider, Content } = Layout;
 
 interface UserLayoutProps {
@@ -23,19 +23,14 @@ interface UserLayoutProps {
 }
 
 const UserLayout: React.FC<UserLayoutProps> = ({ bots, loading, fetchBots, packages, fetchPackages }) => {
+  const location = useLocation();
+
   useEffect(() => {
     fetchBots();
     fetchPackages();
   }, [fetchBots, fetchPackages]);
 
-  const renderSubscriptions = (subscriptions: SubscriptionModel[]) => {
-    return subscriptions.map((sub) => (
-      <p key={sub.id}>
-        Messages Remaining: {sub.msgcount}<br />
-        Expiry Date: {new Date(sub.expirydate).toLocaleDateString()}
-      </p>
-    ));
-  };
+  const isBotsTab = location.pathname === '/user/bots';
 
   return (
     <ConfigProvider
@@ -47,47 +42,35 @@ const UserLayout: React.FC<UserLayoutProps> = ({ bots, loading, fetchBots, packa
     >
       <Layout>
         <Sider width={230} collapsible className="ant-layout-sider">
-          <div className="logo">
-          </div>
+          <div className="logo"></div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1" icon={<ShoppingCartOutlined />}>
+            <Menu.Item key="1" icon={<RobotOutlined />}>
+              <Link to="/user/bots">Bots</Link>
+            </Menu.Item>
+            <Menu.Item key="2" icon={<ShoppingCartOutlined />}>
               <Link to="/user/orders">Orders</Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<RobotOutlined />}>
-              <Link to="/user">Bots</Link>
-            </Menu.Item>
-            <Menu.Item key="3" icon={<LogoutButton collapsed={true} />}>
-            </Menu.Item>
+            <Menu.Item key="3" icon={<LogoutButton collapsed={true} />}></Menu.Item>
           </Menu>
         </Sider>
         <Layout>
           <Header className="header-content">
-            <h1 className='header-title'>User Panel</h1>
+            <h1 className="header-title">User Panel</h1>
           </Header>
           <Content className="site-layout-background">
-          <CreateOrderButton/>
-            {loading ? (
-              <Spin size="large" />
-            ) : (
-              <Row gutter={[16, 16]}>
-                {bots.map((bot) => (
-                  <Col key={bot.id} span={8}>
-                    <Card title={bot.domain} bordered={true} className="bot-card">
-                      <p className='bot-card'>
-                        Status: {bot.status === 1 ? 'Active' : 'Inactive'}
-                      </p>
-                      {renderSubscriptions(bot.subscriptions)}
-
-                      <Space>
-                        <RechargeBotButtonModal botId={bot.id} packages={packages} />
-                        <RetrainBotButton botId={bot.id} />
-                      </Space>
-                    </Card>
-                  </Col>
-
-                ))}
-              </Row>
-
+            {isBotsTab && (
+              <div className="create-order-button-container">
+                <CreateOrderButton />
+              </div>
+            )}
+            {isBotsTab && (
+              <>
+                {loading ? (
+                  <Spin size="large" />
+                ) : (
+                  <UserBots bots={bots} packages={packages} />  // Updated component name
+                )}
+              </>
             )}
             <Outlet />
           </Content>
@@ -100,12 +83,12 @@ const UserLayout: React.FC<UserLayoutProps> = ({ bots, loading, fetchBots, packa
 const mapStateToProps = (state: RootState) => ({
   bots: state.botsReducer.bots,
   loading: state.botsReducer.loading,
-  packages: state.pkgReducer.packages
+  packages: state.pkgReducer.packages,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
   fetchBots: () => dispatch({ type: GET_BOTS_REQUEST }),
-  fetchPackages: () => dispatch({ type: GET_PACKAGES_REQUEST }),
+  fetchPackages: () => dispatch({ type: GET_PAID_PACKAGES_REQUEST }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserLayout);

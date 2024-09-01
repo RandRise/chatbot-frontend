@@ -1,14 +1,15 @@
-// src/components/CreateBotButtonModal/CreateBotButtonModal.tsx
-
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import { connect } from 'react-redux';
 import CreateBotForm from '../CreateBotForm/CreateBotForm';
 import { RootState } from '../../redux/reducers';
+import { PackageModel } from '../../models/PackageModel';
 
+interface CreateOrderButtonProps {
+    packages: PackageModel[];
+}
 
-
-const CreateOrderButton = () => {
+const CreateOrderButton: React.FC<CreateOrderButtonProps> = (props) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const showModal = () => {
@@ -17,6 +18,10 @@ const CreateOrderButton = () => {
 
     const handleCancel = () => {
         setIsModalVisible(false);
+    };
+
+    const handleSuccess = () => {
+        handleCancel();
     };
 
     return (
@@ -30,7 +35,9 @@ const CreateOrderButton = () => {
                 onCancel={handleCancel}
                 footer={null}
             >
-                <CreateBotForm onSuccess={handleCancel}  />
+                <CreateBotForm
+                    onSuccess={handleSuccess}
+                />
             </Modal>
         </>
     );

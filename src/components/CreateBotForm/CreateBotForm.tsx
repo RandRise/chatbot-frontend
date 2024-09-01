@@ -1,6 +1,4 @@
-// src/components/CreateBotForm/CreateBotForm.tsx
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Form, Input, Select, Button } from 'antd';
 import { connect } from 'react-redux';
 import { CREATE_ORDER_REQUEST } from '../../redux/actions/Actions';
@@ -17,31 +15,16 @@ interface CreateBotFormProps {
 }
 
 const CreateBotForm: React.FC<CreateBotFormProps> = ({ packages, createOrder, onSuccess }) => {
-    const [isFreePackageDisabled, setIsFreePackageDisabled] = useState(false);
-    const freePackageId = 4;
-
-    useEffect(() => {
-        const freePackageUsed = localStorage.getItem('freePackageUsed');
-        console.log("Checking if free package was used: ", freePackageUsed); // Added for debugging
-        if (freePackageUsed) {
-            setIsFreePackageDisabled(true);
-        }
-    }, []);
+    const [form] = Form.useForm(); // Create form instance
 
     const onFinish = (values: CreateOrderModel) => {
-        console.log("Form submitted with values: ", values); // Added for debugging
-        if (values.packageId === freePackageId) {
-            localStorage.setItem('freePackageUsed', 'true');
-            setIsFreePackageDisabled(true); // Set the state immediately after using the free package
-            console.log("Free package used, setting flag in localStorage."); // Added for debugging
-        }
-
         createOrder(values);
+        form.resetFields();
         onSuccess();
     };
 
     return (
-        <Form name="createBot" onFinish={onFinish}>
+        <Form form={form} name="createBot" onFinish={onFinish}>
             <Form.Item
                 name="packageId"
                 label="Package"
@@ -49,11 +32,7 @@ const CreateBotForm: React.FC<CreateBotFormProps> = ({ packages, createOrder, on
             >
                 <Select placeholder="Select a package">
                     {packages.map((pkg) => (
-                        <Option
-                            key={pkg.id}
-                            value={pkg.id}
-                            disabled={pkg.id === freePackageId && isFreePackageDisabled}
-                        >
+                        <Option key={pkg.id} value={pkg.id}>
                             {pkg.name} - ${pkg.formattedPrice}
                         </Option>
                     ))}

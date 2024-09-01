@@ -29,7 +29,6 @@ export class OrderManagement {
                     Authorization: `Bearer ${token}`
                 }
             });
-            console.log('API Response:', response.data); // Add this log
             return response.data;
         } catch (error: any) {
             throw error.response?.data ?? error.message;

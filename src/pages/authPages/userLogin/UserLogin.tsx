@@ -29,7 +29,7 @@ const UserLogin: React.FC<UserLoginProps> = ({ response, isSuccess, loading, log
             if (role === 'admin') {
                 navigate('/admin');
             } else if (role === 'user') {
-                navigate('/user');
+                navigate('/user/bots');
             }
         }
     },

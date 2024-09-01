@@ -24,6 +24,7 @@ const rootReducer = combineReducers({
     rechargeChatbot: rechargeChatbotReducer,
     retrainChatbot: retrainChatbotReducer,
     orderInfoReducer: orderInfoReducer,
+
 })
 
 const sagaMiddleWare = createSagaMiddleware();

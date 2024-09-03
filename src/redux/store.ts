@@ -18,12 +18,14 @@ const rootReducer = combineReducers({
     userLogin: loginReducer,
     userForgetPassword: forgetPasswordReducer,
     userResetPassword: resetPasswordReducer,
-    pkgReducer: packagesReducer,
+    // pkgReducer: packagesReducer,
     botsReducer: botsReducer,
     orderReducer: createOrderReducer,
     rechargeChatbot: rechargeChatbotReducer,
     retrainChatbot: retrainChatbotReducer,
-    orderInfoReducer: orderInfoReducer,
+    // orderInfoReducer: orderInfoReducer,
+    orderInfoReducer,
+    pkgReducer: packagesReducer,
 
 })
 

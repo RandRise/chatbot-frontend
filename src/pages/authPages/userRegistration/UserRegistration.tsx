@@ -100,7 +100,12 @@ const UserRegistrationForm: React.FC<UserRegistrationProps> = ({ response, isSuc
                                         >
                                             <Input placeholder="Enter your email address" />
                                         </Form.Item>
-
+                                        <Form.Item
+                                            name="domain"
+                                            label="Website"
+                                            rules={[{ required: true, type: 'url', message: 'Please enter your valid website url' }]}>
+                                            <Input placeholder='Enter your website URL' />
+                                        </Form.Item>
                                         <Form.Item
                                             name="password"
                                             label="Password"
@@ -111,10 +116,9 @@ const UserRegistrationForm: React.FC<UserRegistrationProps> = ({ response, isSuc
                                         >
                                             <Input.Password placeholder="Enter your password" />
                                         </Form.Item>
-
                                         <Form.Item>
                                             <Button className='register-btn' type="primary" htmlType="submit" block>
-                                            {loading ? <SpinLoader /> : 'Register'}
+                                                {loading ? <SpinLoader /> : 'Register'}
                                             </Button>
                                         </Form.Item>
                                     </Form>

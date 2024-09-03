@@ -9,6 +9,7 @@ import DashboardUser from '../components/Layouts/UserLayout/userLayout';
 import AdminRoute from './AdminRoute';
 import UserRoute from './UserRoute';
 import MyOrders from '../pages/userPages/UserOrders';
+import UserOrders from '../pages/adminPages/UserOrders';
 
 
 const AppRoutes: React.FC = () => {
@@ -20,11 +21,14 @@ const AppRoutes: React.FC = () => {
                 <Route path="/" element={<Navigate to="/register" />} />
                 <Route path="reset-password" element={<ResetPassword />} />
                 <Route path="forget-password" element={<ForgetPassword />} />
-                <Route path="/admin" element={<AdminRoute><DashboardAdmin /></AdminRoute>} />
+
+                <Route path="/admin" element={<AdminRoute><DashboardAdmin /></AdminRoute>} >
+                    <Route path="orders" element={<UserOrders />} />
+                </Route>
                 <Route path="/user" element={<UserRoute><DashboardUser /></UserRoute>} >
                     <Route path="orders" element={<MyOrders />} />
                     <Route path="bots" element={<div />} />
-                    
+
                 </Route>
                 <Route path="*" element={<NotFound />} />
             </Routes>

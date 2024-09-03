@@ -34,4 +34,19 @@ export class OrderManagement {
             throw error.response?.data ?? error.message;
         }
     }
+
+    static fetchAllOrdersApi = async (): Promise<GenericResponse> => {
+        try {
+            const token = localStorage.getItem('token');
+
+            const response = await axios.get(`${baseURL}/get-all-orders`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            return response.data;
+        } catch (error: any) {
+            throw error.response?.data ?? error.message;
+        }
+    }
 }

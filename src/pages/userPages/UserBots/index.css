@@ -1,0 +1,128 @@
+/* src/components/Layouts/UserLayout/index.css */
+
+/* Sidebar Logo */
+.logo {
+    height: 40px;
+    margin: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Subtle background for the logo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Header Styles */
+  .header-content {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    /* Adjust header height */
+    padding: 0 20px;
+    background-color: #3881C3;
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .header-content h1 {
+    margin: 0;
+    font-size: 20px;
+    /* Adjust title font size */
+    font-weight: 500;
+  }
+  
+  .header-content a {
+    display: flex;
+    /* Allow wrapping if title is long */
+    align-items: center;
+    text-decoration: none;
+    /* Remove underline from link */
+    color: inherit;
+    /* Inherit header text color */
+  }
+  
+  .header-content a:hover {
+    opacity: 0.8;
+    /* Slight opacity change on hover */
+  }
+  
+  .site-layout-background {
+    background: #f0f2f5;
+    /* Light background color */
+    min-height: 100vh;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+  
+  /* Sidebar */
+  .ant-layout-sider {
+    background-color: #1890ff;
+    /* Lighter blue background for the sidebar */
+  }
+  
+  .ant-menu-dark.ant-menu-inline .ant-menu-item {
+    border-radius: 4px;
+    margin: 8px 0;
+  }
+  
+  .ant-menu-dark.ant-menu-inline .ant-menu-item-selected {
+    background-color: #1890ff;
+    /* Highlight the selected item with a lighter blue */
+  }
+  
+  /* Adjust Menu Icons */
+  .ant-menu-item .anticon {
+    font-size: 18px;
+    color: white; /* White icon color for better contrast */
+  }
+  
+  /* Content Area */
+  .ant-layout-content {
+    background: white;
+    /* White background for the content area */
+    padding: 24px;
+    margin: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for the content area */
+  }
+  
+  /* Logout Button */
+  .ant-menu-item .ant-btn {
+    width: 100%;
+    text-align: left;
+  }
+  
+  .bot-card {
+    background-color: #f5f5f5; /* Lighter background for bot cards */
+    border: 1px solid #ddd; /* Add a border for separation */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(20, 10, 10, 0.281);
+  }
+  
+  .bot-card p {
+    margin-bottom: 10px;
+  }
+  
+  
+  /* Responsive Layout */
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      padding: 10px;
+    }
+  
+    .header-content h1 {
+      font-size: 20px;
+    }
+  
+    .ant-layout-sider {
+      width: 100%;
+      height: auto;
+    }
+  
+    .ant-layout-sider-trigger {
+      display: none;
+      /* Hide the collapse button on mobile */
+    }
+  }

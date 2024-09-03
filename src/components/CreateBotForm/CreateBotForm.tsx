@@ -15,7 +15,8 @@ interface CreateBotFormProps {
 }
 
 const CreateBotForm: React.FC<CreateBotFormProps> = ({ packages, createOrder, onSuccess }) => {
-    const [form] = Form.useForm(); // Create form instance
+    const [form] = Form.useForm();
+
 
     const onFinish = (values: CreateOrderModel) => {
         createOrder(values);
@@ -24,7 +25,7 @@ const CreateBotForm: React.FC<CreateBotFormProps> = ({ packages, createOrder, on
     };
 
     return (
-        <Form form={form} name="createBot" onFinish={onFinish}>
+        <Form name="createBot" onFinish={onFinish} form={form}>
             <Form.Item
                 name="packageId"
                 label="Package"
@@ -48,6 +49,7 @@ const CreateBotForm: React.FC<CreateBotFormProps> = ({ packages, createOrder, on
             <Form.Item>
                 <Button type="primary" htmlType="submit">
                     Add New Web-Bot
+                    
                 </Button>
             </Form.Item>
         </Form>

@@ -18,7 +18,7 @@ const LogoutButton: React.FC<{ collapsed: boolean }> = (props) => {
                 icon={<LogoutOutlined />}
                 onClick={() => {
                     localStorage.removeItem("token");
-                    localStorage.removeItem("roles");
+                    localStorage.removeItem("role");
                     navigate("/");
                 }}
             >

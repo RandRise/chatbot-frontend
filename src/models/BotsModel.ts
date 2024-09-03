@@ -2,6 +2,7 @@ export interface BotsModel {
     id: number,
     domain: string
     status: number
+    url: string
     subscriptions: SubscriptionModel[]
 }
 

@@ -9,6 +9,9 @@ import {
     GET_ORDER_REQUEST,
     GET_ORDER_SUCCESS,
     GET_BOTS_REQUEST,
+    GET_ALL_ORDERS_FAILURE,
+    GET_ALL_ORDERS_REQUEST,
+    GET_ALL_ORDERS_SUCCESS,
 } from '../redux/actions/Actions';
 import { showToast } from "../components/ToastComponent";
 
@@ -39,6 +42,19 @@ function* watchFetchOrdersSaga(): Generator<any, void, any> {
     yield takeEvery(GET_ORDER_REQUEST, fetchOrdersSaga);
 }
 
+function* fetchAllOrdersSaga(): Generator<any, void, any> {
+    try {
+        const response = yield call(OrderManagement.fetchAllOrdersApi);
+        yield put({ type: GET_ALL_ORDERS_SUCCESS, payload: response.data })
+    } catch (error: any) {
+        yield put({ type: GET_ALL_ORDERS_FAILURE, payload: error })
+    }
+}
+
+function* watchFetchAllOrdersSaga(): Generator<any, void, any> {
+    yield takeEvery(GET_ALL_ORDERS_REQUEST, fetchAllOrdersSaga);
+}
+
 function* watchCreateOrderSaga(): Generator<any, void, any> {
     yield takeEvery(CREATE_ORDER_REQUEST, createOrderSaga);
 }
@@ -47,5 +63,6 @@ export default function* OrderSaga() {
     yield all([
         watchCreateOrderSaga(),
         watchFetchOrdersSaga(),
+        watchFetchAllOrdersSaga(),
     ])
 }

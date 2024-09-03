@@ -7,9 +7,9 @@ const AdminRoute = ({ children }: { children: ReactNode }) => {
   const roles = getRolesFromLocalStorage();
 
   if (token && roles?.includes("admin")) {
-    return <>{children}</>;  // Return the children if the role is Admin
+    return <>{children}</>; 
   } else {
-    return <Navigate to="/login" replace />;  // Otherwise, redirect to login
+    return <Navigate to="/login" replace />;
   }
 };
 

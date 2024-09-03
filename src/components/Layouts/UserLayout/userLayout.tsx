@@ -8,7 +8,7 @@ import { GET_BOTS_REQUEST, GET_PAID_PACKAGES_REQUEST } from '../../../redux/acti
 import './index.css';
 import LogoutButton from '../../Logout Button/LogoutButton';
 import CreateOrderButton from '../../CreateOrderButton/CreateOrderButton';
-import UserBots from '../../../pages/userPages/UserBots';// Updated import
+import UserBots from '../../../pages/userPages/UserBots/UserBots';// Updated import
 import { BotsModel } from '../../../models/BotsModel';
 import { PackageModel } from '../../../models/PackageModel';
 
@@ -60,7 +60,7 @@ const UserLayout: React.FC<UserLayoutProps> = ({ bots, loading, fetchBots, packa
           <Content className="site-layout-background">
             {isBotsTab && (
               <div className="create-order-button-container">
-                <CreateOrderButton />
+                <CreateOrderButton  />
               </div>
             )}
             {isBotsTab && (
@@ -84,6 +84,7 @@ const mapStateToProps = (state: RootState) => ({
   bots: state.botsReducer.bots,
   loading: state.botsReducer.loading,
   packages: state.pkgReducer.packages,
+  orders: state.orderInfoReducer.orders
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

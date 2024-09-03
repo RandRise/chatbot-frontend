@@ -3,4 +3,5 @@ export interface userRegistrationModel {
     lastname: string;
     email: string;
     password: string;
+    domain: string;
 }

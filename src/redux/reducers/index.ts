@@ -22,6 +22,8 @@ const rootReducer = combineReducers({
   retrainChatbot: retrainChatbotReducer,
   orderInfoReducer: orderInfoReducer,
 
+
+
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

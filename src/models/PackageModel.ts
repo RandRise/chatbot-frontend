@@ -4,5 +4,6 @@ export interface PackageModel {
     msgcount: number,
     numofmonths: number,
     formattedPrice: string,
+    is_default: boolean
 }
 

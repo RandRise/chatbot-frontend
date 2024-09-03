@@ -27,7 +27,7 @@ const UserLogin: React.FC<UserLoginProps> = ({ response, isSuccess, loading, log
             localStorage.setItem('token', token);
             localStorage.setItem('role', role);
             if (role === 'admin') {
-                navigate('/admin');
+                navigate('/admin/orders');
             } else if (role === 'user') {
                 navigate('/user/bots');
             }

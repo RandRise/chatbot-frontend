@@ -1,0 +1,79 @@
+body {
+  background-color: #fff;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+  margin-left: 100px
+}
+
+.gradient-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(10px, 0.35fr));
+  gap: 32px;
+}
+
+.container-title {
+  text-align: center;
+  font-size: 40px;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+/* Card Bot Specific Classes */
+.card-bots {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.card-bots:hover {
+  transform: translateY(-8px);
+}
+
+.container-card-bots {
+  background: linear-gradient(145deg, #c5b2b2, #1a1a1a);
+  border-radius: 12px;
+  padding: 5px;
+}
+
+.card-bots-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 0px;
+}
+
+.card-bots-description {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.ant-btn-primary {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  color: #ffffff;
+}
+
+.ant-btn-primary:hover {
+  background-color: #003f8c;
+  border-color: #003f8c;
+}
+
+/* Fixing Image Sizing */
+.card-bots img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}

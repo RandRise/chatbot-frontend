@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Typography } from 'antd';
 import { PackageModel } from '../../models/PackageModel';
-import './index.css';  // Importing the CSS for package cards
+import '../../assets/styles/main.css';  // Importing the CSS for package cards
 
 interface PackageCardProps {
     package: PackageModel;

@@ -9,7 +9,7 @@ const UserRoute = ({ children }: { children: ReactNode }) => {
   if (token && roles?.includes("user")) {
     return <>{children}</>;
   } else {
-    return <Navigate to="/login" replace />; 
+    return <Navigate to="/sign-in" replace />; 
   }
 };
 

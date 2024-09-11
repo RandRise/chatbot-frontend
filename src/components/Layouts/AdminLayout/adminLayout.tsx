@@ -5,7 +5,7 @@ import { ShoppingCartOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { RootState } from '../../../redux/reducers';
 import { GET_ALL_ORDERS_REQUEST, GET_BOTS_REQUEST } from '../../../redux/actions/Actions';
-import LogoutButton from '../../Logout Button/LogoutButton';
+import LogoutButton from '../../common/Logout Button/LogoutButton';
 import { BotsModel } from '../../../models/BotsModel';
 import './index.css'
 

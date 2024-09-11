@@ -9,7 +9,7 @@ const AdminRoute = ({ children }: { children: ReactNode }) => {
   if (token && roles?.includes("admin")) {
     return <>{children}</>; 
   } else {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/sign-in" replace />;
   }
 };
 

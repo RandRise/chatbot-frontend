@@ -1,7 +1,7 @@
 import { legacy_createStore as createStore, combineReducers } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { applyMiddleware } from "redux";
-import rootSaga from "../sagas/RootSaga";
+import rootSaga from "./sagas/RootSaga";
 import registrationReducer from "./reducers/RegistrationReducer";
 import loginReducer from "./reducers/LoginReducer";
 import forgetPasswordReducer from "./reducers/ForgetPasswordReducer";

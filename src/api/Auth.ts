@@ -60,7 +60,7 @@ export class Authentication {
     }
     static logout = () => {
         localStorage.removeItem('token');
-        window.location.href = '/login';
+        // window.location.href = '/sign-in';
     }
 
     static forgetUserPasswordApi = async (formData: userForgetPasswordModel): Promise<GenericResponse> => {

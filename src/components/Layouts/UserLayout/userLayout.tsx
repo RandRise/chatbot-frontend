@@ -37,7 +37,7 @@ const UserLayout: React.FC<UserLayoutProps> = ({ bots, loading, fetchBots, packa
         collapsible
         trigger={null}
         width={250}
-        collapsedWidth={500}
+        collapsedWidth={200}
         theme="light"
         className={`sider-primary ant-layout-sider-primary ${sidenavType === "#fff" ? "active-route" : ""}`}
         style={{ background: sidenavType }}

@@ -11,7 +11,6 @@ import UserRoute from './UserRoute';
 import MyOrders from '../pages/user/orders/Orders';
 import UserOrders from '../pages/admin/orders/Orders';
 import UserLayout from '../components/Layouts/UserLayout/userLayout';
-import UserBots from '../pages/user/bots/Bots';
 import UserBotsWrapper from '../pages/user/bots/UserBotsWrapper';
 
 const AppRoutes: React.FC = () => {

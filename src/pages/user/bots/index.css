@@ -1,72 +1,110 @@
-body {
-  background-color: #fff;
-}
-
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 30px;
-  margin-left: 100px
+  background-color: #f5f5f5;
 }
 
 .gradient-cards {
   display: grid;
-  grid-template-columns: repeat(2, minmax(10px, 0.35fr));
+  grid-template-columns: repeat(2, minmax(300px, 1fr));
   gap: 32px;
+  min-height: 400px;
 }
 
 .container-title {
-  text-align: center;
-  font-size: 40px;
+  font-size: 36px;
   color: #000;
   font-weight: 600;
   margin-bottom: 40px;
+  text-align: center;
 }
 
-/* Card Bot Specific Classes */
 .card-bots {
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
-  background: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  /* background-color: #fff; */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  max-width: 100%;
+  max-height: 600px;
+  min-height: 500px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffeaea;
+
 }
 
 .card-bots:hover {
   transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .container-card-bots {
   background: linear-gradient(145deg, #c5b2b2, #1a1a1a);
   border-radius: 12px;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 400px;
 }
 
 .card-bots-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.7);
-  margin-bottom: 0px;
+  font-size: 18px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card-bots-description {
   color: rgba(0, 0, 0, 0.7);
   font-size: 16px;
   line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  display: block;
+  text-overflow: ellipsis;
+  /* word-wrap: break-word; */
+  overflow: hidden;
+  max-height: 3.6em;
+  line-height: 1.8em;
+  height: 72px;
+}
+
+.card-bots-status p {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Add ellipsis for overflow text */
+  display: -webkit-box;
+  height: 72px;
+  /* Approximate height for 3 lines of text */
 }
 
 .ant-btn-primary {
-  background-color: #0056b3;
-  border-color: #0056b3;
-  color: #ffffff;
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-top: auto;
+  /* Push buttons to the bottom of the card */
 }
 
 .ant-btn-primary:hover {
-  background-color: #003f8c;
-  border-color: #003f8c;
+  background-color: #0056b3;
+  border-color: #0056b3;
 }
 
 /* Fixing Image Sizing */
@@ -76,4 +114,11 @@ body {
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .gradient-cards {
+    grid-template-columns: 2fr;
+    /* Stack cards in a single column on small screens */
+  }
 }

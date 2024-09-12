@@ -10,7 +10,9 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(300px, 1fr));
   gap: 32px;
-  min-height: 400px;
+  min-height: fit-content;
+  height: fit-content;
+  background-color: #fff;
 }
 
 .container-title {
@@ -19,38 +21,42 @@
   font-weight: 600;
   margin-bottom: 40px;
   text-align: center;
+  cursor: pointer;
 }
 
-.card-bots {
+/* .card-bots {
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
-  /* background-color: #fff; */
+  background-color: #ffeaea;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 20px;
   max-width: 100%;
-  max-height: 600px;
-  min-height: 500px;
+  height: fit-content;
   box-sizing: border-box;
-  display: flex;
   flex-direction: column;
-  background-color: #ffeaea;
-
-}
+  align-items: center;
+  position: relative;
+} */
 
 .card-bots:hover {
   transform: translateY(-8px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: default;
 }
 
 .container-card-bots {
-  background: linear-gradient(145deg, #c5b2b2, #1a1a1a);
   border-radius: 12px;
   padding: 5px;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: space-between;
   min-height: 400px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;  transition: transform 0.2s ease-in-out;
+  height: fit-content;
+
+
+
 }
 
 .card-bots-title {
@@ -63,6 +69,8 @@
   white-space: nowrap;
 }
 
+
+
 .card-bots-description {
   color: rgba(0, 0, 0, 0.7);
   font-size: 16px;
@@ -71,54 +79,88 @@
   -webkit-line-clamp: 3;
   line-clamp: 3;
   -webkit-box-orient: vertical;
-  display: block;
   text-overflow: ellipsis;
-  /* word-wrap: break-word; */
   overflow: hidden;
   max-height: 3.6em;
   line-height: 1.8em;
   height: 72px;
 }
 
-.card-bots-status p {
-  color: rgba(0, 0, 0, 0.7);
-  font-size: 16px;
-  line-height: 1.5;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  /* Add ellipsis for overflow text */
-  display: -webkit-box;
-  height: 72px;
-  /* Approximate height for 3 lines of text */
-}
-
-.ant-btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 4px;
-  margin-top: auto;
-  /* Push buttons to the bottom of the card */
-}
-
-.ant-btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
-}
-
-/* Fixing Image Sizing */
-.card-bots img {
+.card-image-cover img {
   width: 100%;
-  height: auto;
+  height: min-content;
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 20px;
 }
 
+.action-button button {
+  box-shadow: none;
+  border-radius: 0;
+  border-color: #fff;
+}
+
+
+.chip-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.chip {
+  display: inline-block;
+  padding: 8px 10px;
+  border-radius: 16px;
+  color: #000;
+  font-size: 14px;
+  border: 2px solid #2196f3;
+  /* Default border color for chips */
+  background-color: #fff;
+  font-weight: bold;
+}
+
+.chip.active {
+  border-color: #8eff92;
+  align-content: center;
+  /* Green border for active */
+}
+
+.chip.inactive {
+  border-color: #f44336;
+  align-content: center;
+  text-align: center;
+
+  /* Red border for inactive */
+}
+
+.chip.messages {
+  border-color: #b2dafa;
+  align-content: center;
+  text-align: center;
+}
+
+.chip.expiry {
+  border-color: #ffd28f;
+  align-content: center;
+  text-align: center;
+
+  /* Orange border for expiry date */
+}
+.ant-card {
+  background: antiquewhite;
+  transition: transform 0.2s ease-in-out;
+  width:fit-content;
+  height: fit-content;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;}
+
+.card-bots-actions {
+  margin-top: 20px;
+}
+
 @media (max-width: 768px) {
   .gradient-cards {
-    grid-template-columns: 2fr;
-    /* Stack cards in a single column on small screens */
+    grid-template-columns: 1fr;
   }
 }

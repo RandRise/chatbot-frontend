@@ -1,39 +1,38 @@
 import React, { useState } from 'react';
-import { Button, Modal } from 'antd';
+import { Modal } from 'antd';
+import { DollarCircleOutlined } from '@ant-design/icons';
 import RechargeBotForm from '../RechargeBotForm/RechargeBotForm';
 import { PackageModel } from '../../models/PackageModel';
 
 interface RechargeBotButtonModalProps {
-    botId: number;
-    packages: PackageModel[];
+  botId: number;
+  packages: PackageModel[];
 }
 
 const RechargeBotButtonModal: React.FC<RechargeBotButtonModalProps> = ({ botId, packages }) => {
-    const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
-    const showModal = () => {
-        setIsModalVisible(true);
-    };
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
 
-    const handleCancel = () => {
-        setIsModalVisible(false);
-    };
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
-    return (
-        <>
-            <Button type="primary" onClick={showModal}>
-                Recharge Bot
-            </Button>
-            <Modal
-                title="Recharge Bot"
-                open={isModalVisible}
-                onCancel={handleCancel}
-                footer={null}
-            >
-                <RechargeBotForm onSuccess={handleCancel} botId={botId} packages={packages} />
-            </Modal>
-        </>
-    );
+  return (
+    <>
+      <DollarCircleOutlined onClick={showModal} style={{ fontSize: '24px', cursor: 'pointer' }} />
+      <Modal
+        title="Recharge Bot"
+        visible={isModalVisible}
+        onCancel={handleCancel}
+        footer={null}
+      >
+        <RechargeBotForm onSuccess={handleCancel} botId={botId} packages={packages} />
+      </Modal>
+    </>
+  );
 };
 
 export default RechargeBotButtonModal;

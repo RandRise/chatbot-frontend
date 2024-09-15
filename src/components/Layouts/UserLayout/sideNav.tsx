@@ -1,6 +1,6 @@
 import { Menu } from "antd";
 import { NavLink, useLocation } from "react-router-dom";
-import logo from "../../../assets/images/logo.png";
+import logo from "../../../assets/images/Origator.png";
 import './../../../assets/styles/main.css'
 import LogoutButton from "../../common/Logout Button/LogoutButton";
 import CreateOrderButton from "../../common/CreateOrderButton/CreateOrderButton";
@@ -61,7 +61,7 @@ function Sidenav({ color }: SidenavProps) {
         <>
             <div className="brand">
                 <img src={logo} alt="" />
-                <span>Pytheas Dashboard</span>
+                <span></span>
             </div>
             <hr />
             <Menu theme="light" mode="inline">

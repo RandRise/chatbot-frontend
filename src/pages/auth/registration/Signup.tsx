@@ -12,6 +12,8 @@ import '../../../assets/styles/responsive.css';
 import SpinLoader from '../../../components/common/spinLoader/SpinLoader';
 import signinbg from '../../../assets/images/vecteezy_a-robot-reading-a-book-on-a-stack-of-books_34410802.png'
 import Checkbox from 'antd/es/checkbox/Checkbox';
+import Origator from "../../../assets/images/Origator.png"
+
 
 import {
     DribbbleOutlined,
@@ -90,8 +92,9 @@ const UserRegistrationForm: React.FC<UserRegistrationProps> = ({ response, isSuc
         <>
             <Layout className="layout-default layout-signin">
                 <Header>
-                    <div className="header-col header-brand">
-                        <h5>PYTHEAS</h5>
+                    <div className="brand">
+                        <img src={Origator} alt="" />
+                        <span></span>
                     </div>
                     <div className="header-col header-nav">
                         <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
@@ -225,7 +228,9 @@ const UserRegistrationForm: React.FC<UserRegistrationProps> = ({ response, isSuc
                         <Menu.Item>About Us</Menu.Item>
                         <Menu.Item>Teams</Menu.Item>
                         <Menu.Item>Blogs</Menu.Item>
-                        <Menu.Item>Pricing</Menu.Item>
+                        <Menu.Item>
+                            <Link to="/pricing">Pricing</Link>
+                        </Menu.Item>
                     </Menu>
                     <Menu mode="horizontal" className="menu-nav-social">
                         <Menu.Item>
@@ -255,7 +260,7 @@ const UserRegistrationForm: React.FC<UserRegistrationProps> = ({ response, isSuc
                     </Menu>
                     <p className="copyright">
                         {" "}
-                        Copyright © 2024  Pytheas by <a href="#rand">Creative Team</a>.{" "}
+                        Copyright © 2024 Origator by<a href="#rand">Creative Team</a>.{" "}
                     </p>
                 </Footer>
             </Layout>

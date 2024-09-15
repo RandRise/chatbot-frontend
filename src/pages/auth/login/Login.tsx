@@ -10,6 +10,7 @@ import SpinLoader from '../../../components/common/spinLoader/SpinLoader';
 import { Link } from 'react-router-dom';
 import { Content, Footer, Header } from 'antd/es/layout/layout';
 import signinbg from '../../../assets/images/vecteezy_a-robot-reading-a-book-on-a-stack-of-books_34410802.png'
+import Origator from "../../../assets/images/Origator.png"
 import {
     DribbbleOutlined,
     TwitterOutlined,
@@ -86,8 +87,9 @@ const UserLogin: React.FC<UserLoginProps> = ({ response, isSuccess, loading, log
         <>
             <Layout className="layout-default layout-signin">
                 <Header>
-                    <div className="header-col header-brand">
-                        <h5>PYTHEAS</h5>
+                    <div className="brand">
+                        <img src={Origator} alt="" />
+                        <span></span>
                     </div>
                     <div className="header-col header-nav">
                         <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
@@ -239,7 +241,7 @@ const UserLogin: React.FC<UserLoginProps> = ({ response, isSuccess, loading, log
                     </Menu>
                     <p className="copyright">
                         {" "}
-                        Copyright © 2024  Pytheas by <a href="#rand">Creative Team</a>.{" "}
+                        Copyright © 2024  Origator by <a href="#rand">Creative Team</a>.{" "}
                     </p>
                 </Footer>
             </Layout>

@@ -1,70 +1,67 @@
 import React, { useEffect } from 'react';
-import { Layout, Menu, ConfigProvider, Spin } from 'antd';
-import { Link, Outlet } from 'react-router-dom';
-import { ShoppingCartOutlined } from '@ant-design/icons';
+import { Layout } from 'antd';
 import { connect } from 'react-redux';
 import { RootState } from '../../../redux/reducers';
-import { GET_ALL_ORDERS_REQUEST, GET_BOTS_REQUEST } from '../../../redux/actions/Actions';
-import LogoutButton from '../../common/Logout Button/LogoutButton';
+import { GET_BOTS_REQUEST, GET_PAID_PACKAGES_REQUEST } from '../../../redux/actions/Actions';
 import { BotsModel } from '../../../models/BotsModel';
-import './index.css'
+import { PackageModel } from '../../../models/PackageModel';
+import { Outlet } from 'react-router-dom'; // Import Outlet to handle nested routes
+import './../../../assets/styles/main.css';
+import './../../../assets/styles/responsive.css';
+import Sidenav from './sideNavAdmin';
 
-const { Header, Sider, Content } = Layout;
+const { Content, Sider } = Layout;
 
-interface AdminLayoutProps {
-  loading: boolean;
-  fetchOrders: () => void;
-  fetchBots: () => void; // Add fetchBots to props
+interface UserLayoutProps {
   bots: BotsModel[];
+  loading: boolean;
+  fetchBots: () => void;
+  packages: PackageModel[];
+  fetchPackages: () => void;
 }
 
-const AdminLayout: React.FC<AdminLayoutProps> = ({ fetchOrders, fetchBots, loading, bots }) => {
+const UserLayout: React.FC<UserLayoutProps> = ({ bots, loading, fetchBots, packages, fetchPackages }) => {
+  const [sidenavType] = React.useState("#fff");
+  const [sidenavColor] = React.useState("#1890ff");
+
   useEffect(() => {
-    fetchOrders();
-    fetchBots(); // Fetch bots data on component mount
-  }, [fetchOrders, fetchBots]);
+    fetchBots();
+    fetchPackages();
+  }, [fetchBots, fetchPackages]);
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: '#3881C3',
-        },
-      }}
-    >
+    <Layout className="layout-dashboard">
+      <Sider
+        breakpoint="lg"
+        collapsible
+        trigger={null}
+        width={250}
+        collapsedWidth={200}
+        theme="light"
+        className={`sider-primary ant-layout-sider-primary ${sidenavType === "#fff" ? "active-route" : ""}`}
+        style={{ background: sidenavType }}
+      >
+        <Sidenav color={sidenavColor} />
+      </Sider>
       <Layout>
-        <Sider width={230} collapsible className="ant-layout-sider">
-          <div className="logo"></div>
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1" icon={<ShoppingCartOutlined />}>
-              <Link to="/admin/orders">Orders</Link>
-            </Menu.Item>
-            <Menu.Item key="2" icon={<LogoutButton collapsed={true} />}></Menu.Item>
-          </Menu>
-        </Sider>
-        <Layout>
-          <Header className="header-content">
-            <h1 className="header-title">Admin Panel</h1>
-          </Header>
-          <Content className="site-layout-background">
-            <Spin spinning={loading}>
-              <Outlet />
-            </Spin>
-          </Content>
-        </Layout>
+        <Content className="content-ant">
+          <Outlet />
+        </Content>
       </Layout>
-    </ConfigProvider>
+    </Layout>
   );
 };
 
 const mapStateToProps = (state: RootState) => ({
-  loading: state.orderInfoReducer.loading || state.botsReducer.loading,
-  bots: state.botsReducer.bots
+  bots: state.botsReducer.bots,
+  loading: state.botsReducer.loading,
+  packages: state.pkgReducer.packages,
+  orders: state.orderInfoReducer.orders
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  fetchOrders: () => dispatch({ type: GET_ALL_ORDERS_REQUEST }),
-  fetchBots: () => dispatch({ type: GET_BOTS_REQUEST })
+  fetchBots: () => dispatch({ type: GET_BOTS_REQUEST }),
+  fetchPackages: () => dispatch({ type: GET_PAID_PACKAGES_REQUEST }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminLayout);
+export default connect(mapStateToProps, mapDispatchToProps)(UserLayout);

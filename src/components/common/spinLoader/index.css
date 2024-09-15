@@ -2,13 +2,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 24px;
+    height: 100vh;
+    z-index: 99999px;
 }
 
 .spin-box .ant-spin {
     color: #ffffff;
+    z-index: 999999px;
 }
 
 .spin-box .ant-spin-dot-item {
     background-color: #ffffff;
+    z-index: 999999px;
 }

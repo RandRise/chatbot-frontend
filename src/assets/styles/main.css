@@ -3137,3 +3137,15 @@ section.ant-layout.ant-layout-has-sider.layout-dashboard.layout-profile .header-
 .spin-box .ant-spin-dot-item {
   background-color: #ffffff;
 }
+
+.sider-toggle {
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.brand span {
+    font-size: 16px;
+    font-weight: bold;
+}

@@ -1,20 +1,33 @@
 import React from 'react';
-import { Card, Typography } from 'antd';
+import { Card } from 'antd';
 import { PackageModel } from '../../models/PackageModel';
-import '../../assets/styles/main.css';  // Importing the CSS for package cards
-
+import './index.css'
 interface PackageCardProps {
-    package: PackageModel;
+    packages: PackageModel
 }
 
-const PackageCard: React.FC<PackageCardProps> = (props) => {
+const PackageCard: React.FC<PackageCardProps> = ({ packages }) => {
+    const getCardClass = () => {
+        switch (packages.name.toLowerCase()) {
+            case 'gold':
+                return 'package-card gold';
+            case 'silver':
+                return 'package-card silver';
+            case 'bronze':
+                return 'package-card bronze';
+            default:
+                return 'package-card';
+        }
+    };
+
     return (
-        <Card title={props.package.name.toUpperCase()} className="package-card">
-            <Typography.Text>Messages: {props.package.msgcount}</Typography.Text>
-            <br />
-            <Typography.Text>Duration: {props.package.numofmonths} months</Typography.Text>
-            <br />
-            <Typography.Text>Price: {props.package.formattedPrice}</Typography.Text>
+        <Card className={getCardClass()} style={{width:'1200px', padding:'48px', height:'auto'}}>
+            <h2>{packages.name}</h2>
+            <ul>
+                <li>Messages: {packages.msgcount}</li>
+                <li>Duration: {packages.numofmonths} months</li>
+            </ul>
+            <div className="price">Price: {packages.formattedPrice}</div>
         </Card>
     );
 };

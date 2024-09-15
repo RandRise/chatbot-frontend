@@ -122,7 +122,7 @@ const UserLogin: React.FC<UserLoginProps> = ({ response, isSuccess, loading, log
                                 onFinish={onFinish}
                                 layout="vertical"
                                 className="row-col"
-                                
+
                             >
                                 <Form.Item
                                     className="username"
@@ -207,7 +207,9 @@ const UserLogin: React.FC<UserLoginProps> = ({ response, isSuccess, loading, log
                         <Menu.Item>About Us</Menu.Item>
                         <Menu.Item>Teams</Menu.Item>
                         <Menu.Item>Blogs</Menu.Item>
-                        <Menu.Item>Pricing</Menu.Item>
+                        <Menu.Item>
+                            <Link to="/pricing">Pricing</Link>
+                        </Menu.Item>
                     </Menu>
                     <Menu mode="horizontal" className="menu-nav-social">
                         <Menu.Item>

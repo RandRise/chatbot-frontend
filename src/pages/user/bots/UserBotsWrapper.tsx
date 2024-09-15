@@ -8,15 +8,16 @@ import UserBots from './Bots';
 interface UserBotsWrapperProps {
   bots: BotsModel[];
   packages: PackageModel[];
+  loading: boolean
 }
 
 const UserBotsWrapper: React.FC<UserBotsWrapperProps> = ({ bots, packages }) => {
-  return <UserBots bots={bots} packages={packages} />;
+  return <UserBots bots={bots} packages={packages}/>;
 };
 
 const mapStateToProps = (state: RootState) => ({
   bots: state.botsReducer.bots,
   packages: state.pkgReducer.packages,
+  loading: state.botsReducer.loading
 });
-
 export default connect(mapStateToProps)(UserBotsWrapper);

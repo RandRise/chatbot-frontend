@@ -11,8 +11,8 @@ interface UserBotsWrapperProps {
   loading: boolean
 }
 
-const UserBotsWrapper: React.FC<UserBotsWrapperProps> = ({ bots, packages }) => {
-  return <UserBots bots={bots} packages={packages}/>;
+const UserBotsWrapper: React.FC<UserBotsWrapperProps> = ({ bots, packages, loading }) => {
+  return <UserBots bots={bots} packages={packages} loading={loading}/>;
 };
 
 const mapStateToProps = (state: RootState) => ({

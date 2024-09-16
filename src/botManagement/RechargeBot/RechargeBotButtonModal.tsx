@@ -25,7 +25,7 @@ const RechargeBotButtonModal: React.FC<RechargeBotButtonModalProps> = ({ botId, 
       <DollarCircleOutlined onClick={showModal} style={{ fontSize: '24px', cursor: 'pointer' }} />
       <Modal
         title="Recharge Bot"
-        visible={isModalVisible}
+        open={isModalVisible}
         onCancel={handleCancel}
         footer={null}
       >

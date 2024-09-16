@@ -1,17 +1,20 @@
+/* Center the loader inside the card container */
 .spin-box {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    z-index: 99999px;
+    height: 400px; /* Adjust as needed based on the container's height */
 }
 
+/* Change the loader color */
 .spin-box .ant-spin {
-    color: #ffffff;
-    z-index: 999999px;
+    color: #007BFF; /* Changed from white to blue or another color */
+    align-items: center;
+    margin-left: 400px;
 }
 
+/* Change the dot item color */
 .spin-box .ant-spin-dot-item {
-    background-color: #ffffff;
-    z-index: 999999px;
+    background-color: #007BFF; /* Make sure the dot color matches the loader color */
+    align-items: center;
 }

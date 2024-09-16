@@ -6,7 +6,6 @@ import { RootState } from '../../../redux/reducers';
 import { USER_LOGIN_REQUEST } from '../../../redux/actions/Actions';
 import { userLoginModel } from '../../../models/UserLoginModel';
 import { LoginResponse } from '../../../utils/GenericResponse';
-import SpinLoader from '../../../components/common/spinLoader/SpinLoader';
 import { Link } from 'react-router-dom';
 import { Content, Footer, Header } from 'antd/es/layout/layout';
 import signinbg from '../../../assets/images/vecteezy_a-robot-reading-a-book-on-a-stack-of-books_34410802.png'
@@ -18,6 +17,7 @@ import {
     GithubOutlined,
 } from "@ant-design/icons";
 import '../../../assets/styles/main.css'; // Import CSS
+import SpinLoaderSign from '../../../components/common/spinLoader/SpinLoaderSign';
 
 const signup = [
     <svg
@@ -168,7 +168,7 @@ const UserLogin: React.FC<UserLoginProps> = ({ response, isSuccess, loading, log
                                         htmlType="submit"
                                         style={{ width: "100%" }}
                                     >
-                                        {loading ? <SpinLoader /> : 'Sign in'}
+                                        {loading ? <SpinLoaderSign size={24} color='#fff' /> : 'Sign in'}
                                     </Button>
                                 </Form.Item>
                                 <Space>

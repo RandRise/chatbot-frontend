@@ -10,12 +10,24 @@ export class OrderManagement {
 
             const response = await axios.post(`${baseURL}/create-order`, formData, {
                 headers: {
-                    Authorization: `Bearer ${token}`
-                }
+                    Authorization: `Bearer ${token}`,
+                },
             });
+
+            console.log('API response:', response);
+
+            const url = response?.data?.data;
+            console.log('Redirect URL:', url);
+
+            if (url) {
+                window.location.href = url;
+            } else {
+                console.error('No URL found in the response for redirection.');
+            }
 
             return response.data;
         } catch (error: any) {
+            console.error('Error in createOrderApi:', error);
             throw error.response?.data ?? error.message;
         }
     }

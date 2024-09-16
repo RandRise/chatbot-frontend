@@ -12,7 +12,7 @@
   grid-template-columns: repeat(2, minmax(300px, 1fr));
   gap: 32px;
   min-height: fit-content;
-  height: fit-content;
+  height: 100%;
   background-color: #fff;
   
 }

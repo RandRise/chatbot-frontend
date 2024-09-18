@@ -52,7 +52,7 @@ function Sidenav({ color }: SidenavProps) {
                         >
                             {tables}
                         </span>
-                        <span className="label">Orders</span>
+                        <span className="label">Purchases</span>
                     </NavLink>
                 </Menu.Item>
                 <Menu.Item key="3">

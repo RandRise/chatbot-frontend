@@ -1,0 +1,89 @@
+.layout-about {
+    min-height: 100vh;
+    background: url('../../assets/images/Ai-Human-interaction.webp') no-repeat center center;
+    background-size: cover;
+}
+
+.brand img {
+    width: 150px;
+    margin: 20px;
+}
+
+.about-content {
+    padding: 60px;
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly less opaque for better readability */
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.about-title {
+    text-align: left;
+    color: #333; /* Darker color for better contrast */
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: justify;
+    font-weight: normal; /* Remove bold for better readability */
+    color: #333; /* Darker color for better contrast */
+    background-color: transparent;
+    padding-bottom: 20px; /* Add spacing between paragraphs */
+}
+
+.about-text p {
+    margin-bottom: 20px; /* Space between paragraphs */
+    color: #333; /* Consistent text color */
+    background-color: transparent; /* Ensure no extra background color */
+}
+
+.about-subtitle {
+    margin-top: 24px;
+    color: #555; /* Slightly lighter than title for distinction */
+    font-size: 1.5rem;
+}
+
+.values-list {
+    list-style-type: disc;
+    margin-left: 40px;
+    font-size: 1.05rem;
+    color: #333; /* Consistent text color */
+}
+
+.about-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f2f5;
+}
+
+.social-links a {
+    margin: 0 10px;
+    font-size: 20px;
+    color: #1f1f1f;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #40a9ff;
+}
+
+.copyright {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #888;
+}
+
+.about-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+}

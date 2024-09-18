@@ -92,10 +92,12 @@ const PackageWrapper: React.FC<PackageCardsWrapperProps> = ({ packages, fetchPac
                     <PackageCard key={pkg.id} packages={pkg} />
                 ))}
             </div>
-            <Footer>
+            <Footer style={{marginTop:'30px'}}>
                 <Menu mode="horizontal">
                     <Menu.Item>Company</Menu.Item>
-                    <Menu.Item>About Us</Menu.Item>
+                    <Menu.Item>
+                        <Link to="/about-us">About us</Link>
+                    </Menu.Item>
                     <Menu.Item>Teams</Menu.Item>
                     <Menu.Item>Blogs</Menu.Item>
                     <Menu.Item>

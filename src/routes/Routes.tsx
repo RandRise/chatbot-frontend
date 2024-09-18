@@ -13,6 +13,7 @@ import UserLayout from '../components/Layouts/UserLayout/userLayout';
 import UserBotsWrapper from '../pages/user/bots/UserBotsWrapper';
 import AdminLayout from '../components/Layouts/AdminLayout/adminLayout';
 import PackageWrapper from '../components/Packages/PackageWrapper';
+import AboutUs from '../pages/about/about';
 const AppRoutes: React.FC = () => {
     return (
         <Router>
@@ -23,6 +24,7 @@ const AppRoutes: React.FC = () => {
                 <Route path="reset-password" element={<ResetPassword />} />
                 <Route path="forget-password" element={<ForgetPassword />} />
                 <Route path="pricing" element={<PackageWrapper />} />
+                <Route path="about-us" element={<AboutUs />} />
                 <Route element={
                     <AdminRoute>
                         <AdminLayout />
